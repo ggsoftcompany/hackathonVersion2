@@ -1,0 +1,22 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Rental locations</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content fullscreen="true">
+  <google-map
+    [center]="mapCenter"
+    [options]="mapOptions"
+    [zoom]="mapZoom"
+    height="100%"
+    width="100%">
+    <map-marker
+      *ngFor="let marker of rentalLocations"
+      [position]="marker.position"
+      [label]="marker.label"
+      [title]="marker.title"
+      [options]="marker.options">
+    </map-marker>
+    </google-map>
+</ion-content>

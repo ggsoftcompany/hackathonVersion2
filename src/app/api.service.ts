@@ -16,4 +16,9 @@ export class ApiService {
     return this.httpClient.get<any>(url);
   }
 
+  getLocationsNear(latitude: number, longitude: number): Observable<any>{
+    const url = `${environment.apiBaseUrl}/rental-locations/nearest?latitude=${latitude}&longitude=${longitude}`;
+    return this.httpClient.get<any>(url);
+  }
+
 }

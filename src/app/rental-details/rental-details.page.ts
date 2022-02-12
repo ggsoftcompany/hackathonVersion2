@@ -7,7 +7,7 @@ import {
 } from '@ionic/angular';
 import {Router} from '@angular/router';
 import { animation } from '@angular/animations';
-import { MapInfoWindow, MapMarker, GoogleMap } from '@angular/google-maps'
+import { MapInfoWindow, MapMarker, GoogleMap } from '@angular/google-maps';
 
 @Component({
   selector: 'app-rental-details',
@@ -15,12 +15,11 @@ import { MapInfoWindow, MapMarker, GoogleMap } from '@angular/google-maps'
   styleUrls: ['./rental-details.page.scss'],
 })
 export class RentalDetailsPage implements OnInit {
-  @ViewChild(GoogleMap, { static: false }) map: GoogleMap
-  @ViewChild(MapInfoWindow, { static: false }) info: MapInfoWindow
+  @ViewChild(GoogleMap, { static: false }) map: GoogleMap;
+  @ViewChild(MapInfoWindow, { static: false }) info: MapInfoWindow;
   mapZoom = 12;
   mapCenter: google.maps.LatLngLiteral;
   mapOptions: google.maps.MapOptions = {
-    mapTypeId: 'hybrid',
     zoomControl: false,
     scrollwheel: true,
     disableDoubleClickZoom: true,
@@ -47,8 +46,8 @@ export class RentalDetailsPage implements OnInit {
   customerAddress: string;
   customerType: string;
   makerOptions: any;
-  markerLabelDriver:any;
-  markerLabelRyder:any;
+  markerLabelDriver: any;
+  markerLabelRyder: any;
 
   step = 0;
   markers: any;
@@ -61,7 +60,7 @@ export class RentalDetailsPage implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.makerOptions ={ animation: google.maps.Animation.BOUNCE }
+    this.makerOptions ={ animation: google.maps.Animation.BOUNCE };
 
     this.validationData = this.router.getCurrentNavigation().extras.state.validationData;
     this.truckType = this.validationData.truck.model;
@@ -91,15 +90,20 @@ export class RentalDetailsPage implements OnInit {
         text: this.locationAddress,
       };
     }else{
-      window.alert('no esta en la yarda');
+      window.alert('The truck is not in any rental location...at this point we can show a list of the nearby locations.');
     }
 
 
   }
 
-  DropOff(){
-     window.alert("yesssss");
-  }
+  dropOff(){
+    this.router.navigate(['/tabs/drop-off'], {
+      state: {
+        validationData: this.validationData
+      }
+    }).then(r =>{});
+
+   }
   addMarker() {
     this.markers.push({
       position: {
@@ -127,6 +131,6 @@ export class RentalDetailsPage implements OnInit {
       options: { animation: google.maps.Animation.BOUNCE },
     });
   }
-   
+
 
 }

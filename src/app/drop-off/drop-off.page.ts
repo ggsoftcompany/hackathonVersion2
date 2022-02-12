@@ -1,4 +1,4 @@
-import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
+import {AfterViewInit, Component, ElementRef, NgZone, OnInit, ViewChild} from '@angular/core';
 import {Camera, CameraResultType, CameraSource} from '@capacitor/camera';
 import {DomSanitizer, SafeResourceUrl} from '@angular/platform-browser';
 
@@ -10,13 +10,14 @@ import {DomSanitizer, SafeResourceUrl} from '@angular/platform-browser';
 export class DropOffPage implements OnInit {
 
   photo: SafeResourceUrl;
-  constructor(
-    private sanitizer: DomSanitizer) {
-
+  stillValidating = true;
+  constructor( private sanitizer: DomSanitizer) {
   }
 
   ngOnInit() {
-
+      setTimeout(() => {
+        this.stillValidating = false;
+      },8000);
   }
 
   async getPicture() {

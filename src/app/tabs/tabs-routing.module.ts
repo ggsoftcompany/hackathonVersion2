@@ -21,6 +21,10 @@ const routes: Routes = [
         loadChildren: () => import('../drop-off/drop-off.module').then(m => m.DropOffPageModule)
       },
       {
+        path: 'map',
+        loadChildren: () => import('../map/map.module').then( m => m.MapPageModule)
+      },
+      {
         path: '',
         redirectTo: '/tabs/home',
         pathMatch: 'full'

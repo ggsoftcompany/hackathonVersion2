@@ -5,10 +5,6 @@ const routes: Routes = [
   {
     path: '',
     loadChildren: () => import('./tabs/tabs.module').then( m => m.TabsPageModule)
-  },
-  {
-    path: 'drop-off',
-    loadChildren: () => import('./drop-off/drop-off.module').then(m => m.DropOffPageModule)
   }
 ];
 

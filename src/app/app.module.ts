@@ -21,7 +21,7 @@ import {GoogleMapsModule} from '@angular/google-maps';
     FormsModule,
     HttpClientModule,
     ReactiveFormsModule,
-    IonicModule.forRoot(),
+    IonicModule.forRoot({scrollAssist: false}),
     AppRoutingModule,
     BrowserAnimationsModule,
     SharedModule,
