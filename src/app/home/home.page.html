@@ -1,0 +1,64 @@
+
+
+<ion-content class="firs_step" fullscreen="true">
+  <ion-card class="speaker-card">
+    <ion-card-header style="align-items: center; text-align: center; font-size: 16px; font-weight: 600; color: dimgrey; margin-top: 20px; margin-botom: 20px;">Enter the Truck ID or Scan QR Code</ion-card-header>
+    <ion-card-content class="first-step-content">
+      <form #myForm="ngForm" novalidate [formGroup] = "form"  (ngSubmit)="validateTruckId(truckIdentifier)">
+        <ion-item>
+          <ion-input type="text" placeholder="Truck ID" [(ngModel)]='truckIdentifier' formControlName="truckId"></ion-input>
+          <ion-icon item-end name="camera-outline" (click)="scanBarcode()"></ion-icon>
+        </ion-item>
+        <div class="no-vehicle-found" id="errorlabel" *ngIf="inError">We couldn't find any vehicle with that id</div>
+        <div style="margin-top: 30px;">
+          <ion-button type="submit" class="extend-button" expand="block" shape="round">BEGIN</ion-button>
+        </div>
+
+      </form>
+    </ion-card-content>
+  </ion-card>
+</ion-content>
+
+
+<!--<ion-content [fullscreen]="true">-->
+<!--  <mat-stepper orientation="vertical" [linear]="true"  #stepper>-->
+<!--    <mat-step [stepControl]="firstFormGroup" state="phone">-->
+<!--      <mat-step-header [color]="">-->
+
+<!--      </mat-step-header>-->
+<!--      <form [formGroup]="firstFormGroup">-->
+<!--        <ng-template matStepLabel>Fill out your name</ng-template>-->
+<!--        <mat-form-field appearance="fill">-->
+<!--          <mat-label>Name</mat-label>-->
+<!--          <input matInput placeholder="Last name, First name" formControlName="firstCtrl" required>-->
+<!--        </mat-form-field>-->
+<!--        <div>-->
+<!--          <button mat-button matStepperNext>Next</button>-->
+<!--        </div>-->
+<!--      </form>-->
+<!--    </mat-step>-->
+<!--    <mat-step [stepControl]="secondFormGroup">-->
+<!--      <form [formGroup]="secondFormGroup">-->
+<!--        <ng-template matStepLabel>Fill out your address</ng-template>-->
+<!--        <mat-form-field appearance="fill">-->
+<!--          <mat-label>Address</mat-label>-->
+<!--          <input matInput formControlName="secondCtrl" placeholder="Ex. 1 Main St, New York, NY"-->
+<!--                 required>-->
+<!--        </mat-form-field>-->
+<!--        <div>-->
+<!--          <button mat-button matStepperPrevious>Back</button>-->
+<!--          <button mat-button matStepperNext>Next</button>-->
+<!--        </div>-->
+<!--      </form>-->
+<!--    </mat-step>-->
+<!--    <mat-step>-->
+<!--      <ng-template matStepLabel>Done</ng-template>-->
+<!--      <p>You are now done.</p>-->
+<!--      <div>-->
+<!--        <button mat-button matStepperPrevious>Back</button>-->
+<!--        <button mat-button (click)="stepper.reset()">Reset</button>-->
+<!--      </div>-->
+<!--    </mat-step>-->
+<!--  </mat-stepper>-->
+
+<!--</ion-content>-->

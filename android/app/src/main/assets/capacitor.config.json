@@ -1,0 +1,12 @@
+{
+	"appId": "io.ionic.starter",
+	"appName": "RyderFleetDropOff",
+	"webDir": "www",
+	"bundledWebRuntime": false,
+	"plugins": {
+		"SplashScreen": {
+			"launchAutoHide": false,
+			"splashFullScreen": true
+		}
+	}
+}
