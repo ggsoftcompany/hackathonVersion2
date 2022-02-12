@@ -17,6 +17,10 @@ const routes: Routes = [
         loadChildren: () => import('../rental-details/rental-details.module').then(m => m.RentalDetailsPageModule)
       },
       {
+        path: 'drop-off',
+        loadChildren: () => import('../drop-off/drop-off.module').then(m => m.DropOffPageModule)
+      },
+      {
         path: '',
         redirectTo: '/tabs/home',
         pathMatch: 'full'
