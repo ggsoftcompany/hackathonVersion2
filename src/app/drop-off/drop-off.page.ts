@@ -10,14 +10,16 @@ import {DomSanitizer, SafeResourceUrl} from '@angular/platform-browser';
 export class DropOffPage implements OnInit {
 
   photo: SafeResourceUrl;
+  photoO: SafeResourceUrl;
   stillValidating = true;
-  constructor( private sanitizer: DomSanitizer) {
+  currentMiles: string;
+  constructor(
+    private sanitizer: DomSanitizer) {
+    this.currentMiles = '152900';
   }
 
   ngOnInit() {
-      setTimeout(() => {
-        this.stillValidating = false;
-      },8000);
+
   }
 
   async getPicture() {
@@ -31,21 +33,13 @@ export class DropOffPage implements OnInit {
     this.photo = this.sanitizer.bypassSecurityTrustResourceUrl(image && (image.dataUrl));
   }
 
-  // onFileChoose(event: Event) {
-  //   const file = (event.target as HTMLInputElement).files[0];
-  //   const pattern = /image-*/;
-  //   const reader = new FileReader();
-  //
-  //   if (!file.type.match(pattern)) {
-  //     console.log('File format not supported');
-  //     return;
-  //   }
-  //
-  //   reader.onload = () => {
-  //     this.photo = reader.result.toString();
-  //   };
-  //   reader.readAsDataURL(file);
-  //
-  // }
-
+  async getPictureO() {
+    const imageO = await Camera.getPhoto({
+      quality: 100,
+      source:CameraSource.Camera,
+      allowEditing: false,
+      resultType: CameraResultType.DataUrl
+    });
+    this.photoO = this.sanitizer.bypassSecurityTrustResourceUrl(imageO && (imageO.dataUrl));
+  }
 }

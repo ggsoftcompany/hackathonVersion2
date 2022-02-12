@@ -37,7 +37,7 @@
               </ion-item>
             </ion-card-content>
           </ion-card>
-          <mat-card-footer>
+          <mat-card-footer class="ion-text-center">
             <ion-button size="small" (click)="getPictureO()">
               <ion-icon name="camera" slot="start"></ion-icon>
               <ion-label>Take Foto</ion-label>
@@ -61,23 +61,14 @@
               <ion-card-content>
                   <ion-grid>
                     <ion-row>
-                      <ion-row>
-                        <ion-col size="6"><img [src]="photo"></ion-col>
-                        <ion-col size="6"></ion-col>
-                      </ion-row>
-                      <ion-row>
-                        <ion-col size="6"></ion-col>
-                        <ion-col size="6"></ion-col>
-                      </ion-row>
-                      <ion-row>
-                        <ion-col size="6"></ion-col>
-                        <ion-col size="6"></ion-col>
-                      </ion-row>
+                        <ion-col>
+                          <img [src]="photo" width="100%">
+                        </ion-col>
                     </ion-row>
                   </ion-grid>
               </ion-card-content>
             </ion-card>
-            <mat-card-footer>
+            <mat-card-footer class="ion-text-center">
                 <ion-button size="small" (click)="getPicture()">
                   <ion-icon name="camera" slot="start"></ion-icon>
                   <ion-label>Take Photos</ion-label>
