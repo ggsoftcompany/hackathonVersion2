@@ -1,4 +1,4 @@
-import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
+import {AfterViewInit, Component, ElementRef, NgZone, OnInit, ViewChild} from '@angular/core';
 import {Camera, CameraResultType, CameraSource} from '@capacitor/camera';
 import {DomSanitizer, SafeResourceUrl} from '@angular/platform-browser';
 import {Capacitor} from '@capacitor/core';
@@ -14,16 +14,24 @@ export class DropOffPage implements OnInit {
   @ViewChild('filePicker', { static: false }) filePickerRef: ElementRef<HTMLInputElement>;
   photo: SafeResourceUrl;
   isDesktop: boolean;
+  stillValidating: boolean = true;
 
 
   constructor(
     private platform: Platform,
+    private zone: NgZone,
     private sanitizer: DomSanitizer) { }
+
 
   ngOnInit() {
     if ((this.platform.is('mobile') && this.platform.is('hybrid')) || this.platform.is('desktop')) {
       this.isDesktop = true;
     }
+    //this.zone.run(() => {
+      setTimeout(function(){
+        //this.stillValidating =false;
+      },8000);
+    //});
   }
 
   async getPicture() {
@@ -61,3 +69,4 @@ export class DropOffPage implements OnInit {
   }
 
 }
+

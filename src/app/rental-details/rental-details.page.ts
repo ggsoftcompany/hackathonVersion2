@@ -98,7 +98,12 @@ export class RentalDetailsPage implements OnInit {
   }
 
   DropOff(){
-     window.alert("yesssss");
+    this.router.navigate(["/tabs/drop-off"],{
+      state: {
+           validationData: this.validationData
+      }
+})
+
   }
   addMarker() {
     this.markers.push({

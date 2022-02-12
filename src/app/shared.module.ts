@@ -6,6 +6,9 @@ import {MatInputModule} from '@angular/material/input';
 import {MatButtonModule} from '@angular/material/button';
 import {MatIconModule} from '@angular/material/icon';
 import { MatExpansionModule} from '@angular/material/expansion';
+import { MatCardModule} from '@angular/material/card';
+import {MatProgressBarModule} from '@angular/material/progress-bar';
+import {MatDividerModule} from '@angular/material/divider';
 
 const MODULES = [
   CommonModule,
@@ -14,7 +17,12 @@ const MODULES = [
   MatInputModule,
   MatButtonModule,
   MatIconModule,
-  MatExpansionModule
+  MatExpansionModule,
+  MatCardModule,
+  MatProgressBarModule,
+  MatDividerModule
+
+  
 ];
 
 @NgModule({

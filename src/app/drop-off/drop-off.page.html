@@ -1,6 +1,6 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>drop-off</ion-title>
+    <ion-title>Drop Off</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -9,9 +9,19 @@
     <mat-step color="primary">
       <ng-template matStepLabel >Validate Truck Location Step</ng-template>
       <ng-template matStepContent>
-
-
-
+          <mat-card class="example-card">
+            <mat-card-title style="color: darkgoldenrod;">Please wait</mat-card-title>
+            <mat-card-content style="margin-top: 30px;">
+              <p *ngIf="stillValidating">we are validating that you are parked at the location</p>
+            </mat-card-content>
+            <mat-divider inset></mat-divider>
+            <mat-card-actions>
+              <button mat-button>RETRY</button>
+            </mat-card-actions>
+            <mat-card-footer>
+              <mat-progress-bar *ngIf="stillValidating" mode="indeterminate"></mat-progress-bar>
+            </mat-card-footer>
+          </mat-card>   
       </ng-template>
     </mat-step>
     <mat-step>
