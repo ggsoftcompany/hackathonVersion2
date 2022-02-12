@@ -1,0 +1,42 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>drop-off</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content fullscreen="true">
+  <mat-stepper orientation="vertical" linear="true" >
+    <mat-step color="primary">
+      <ng-template matStepLabel >Validate Truck Location Step</ng-template>
+      <ng-template matStepContent>
+
+
+
+      </ng-template>
+    </mat-step>
+    <mat-step>
+      <ng-template matStepLabel>Step 2</ng-template>
+      <ion-button size="small" (click)="getPicture()">
+        <ion-icon name="camera" slot="start"></ion-icon>
+        <ion-label>Upload Image</ion-label>
+      </ion-button>
+      <ion-button size="small" (click)="getPicture()">
+        <ion-icon name="image" slot="start"></ion-icon>
+        <ion-label>Gallery</ion-label>
+      </ion-button>
+      <input type="file" *ngIf="isDesktop" #filePicker (change)="onFileChoose($event)"/>
+
+      <ion-card *ngIf="photo">
+        <ion-card-content>
+          <img [src]="photo">
+        </ion-card-content>
+      </ion-card>
+
+    </mat-step>
+    <mat-step>
+      <ng-template matStepLabel>Step 3</ng-template>
+      <p>This content was rendered eagerly</p>
+      <button mat-button matStepperPrevious>Back</button>
+    </mat-step>
+  </mat-stepper>
+</ion-content>
