@@ -1,4 +1,4 @@
-import {Component, Inject, OnInit} from '@angular/core';
+import {Component, Inject, OnInit, ViewChild} from '@angular/core';
 import {DOCUMENT} from '@angular/common';
 import {
   AlertController,
@@ -6,6 +6,8 @@ import {
   LoadingController,
 } from '@ionic/angular';
 import {Router} from '@angular/router';
+import { animation } from '@angular/animations';
+import { MapInfoWindow, MapMarker, GoogleMap } from '@angular/google-maps'
 
 @Component({
   selector: 'app-rental-details',
@@ -13,6 +15,8 @@ import {Router} from '@angular/router';
   styleUrls: ['./rental-details.page.scss'],
 })
 export class RentalDetailsPage implements OnInit {
+  @ViewChild(GoogleMap, { static: false }) map: GoogleMap
+  @ViewChild(MapInfoWindow, { static: false }) info: MapInfoWindow
   mapZoom = 12;
   mapCenter: google.maps.LatLngLiteral;
   mapOptions: google.maps.MapOptions = {
@@ -42,7 +46,12 @@ export class RentalDetailsPage implements OnInit {
   customerName: string;
   customerAddress: string;
   customerType: string;
+  makerOptions: any;
+  markerLabelDriver:any;
+  markerLabelRyder:any;
+
   step = 0;
+  markers: any;
   constructor(
     @Inject(DOCUMENT) private doc: Document,
     public alertCtrl: AlertController,
@@ -52,6 +61,7 @@ export class RentalDetailsPage implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.makerOptions ={ animation: google.maps.Animation.BOUNCE }
 
     this.validationData = this.router.getCurrentNavigation().extras.state.validationData;
     this.truckType = this.validationData.truck.model;
@@ -66,10 +76,19 @@ export class RentalDetailsPage implements OnInit {
     if(this.currentLocationObject!=null) {
       this.locationAddress = this.currentLocationObject.address;
       this.locationPhone = this.currentLocationObject.phone;
-
+      this.locationAddress = this.currentLocationObject.address;
+      this.locationPhone = this.currentLocationObject.phone;
       this.mapCenter = {
         lat: this.currentLocationObject.latitude,
         lng: this.currentLocationObject.longitude
+      };
+      this.markerLabelDriver = {
+        color: 'yellow',
+        text: this.locationAddress,
+      };
+      this.markerLabelRyder = {
+        color: 'green',
+        text: this.locationAddress,
       };
     }else{
       window.alert('no esta en la yarda');
@@ -78,20 +97,36 @@ export class RentalDetailsPage implements OnInit {
 
   }
 
-
-
-  setStep(index: number) {
-    this.step = index;
+  DropOff(){
+     window.alert("yesssss");
   }
+  addMarker() {
+    this.markers.push({
+      position: {
+        lat: this.locationLat,
+        lng: this.locationLong,
+      },
+      label: {
+        color: 'green',
+        text: 'You are current at ' + this.locationAddress,
+      },
+      title: 'Your current Location ',
+      options: { animation: google.maps.Animation.BOUNCE },
+    });
 
-  nextStep() {
-    this.step++;
+    this.markers.push({
+      position: {
+        lat: this.locationLat,
+        lng: this.locationLong,
+      },
+      label: {
+        color: 'red',
+        text: 'Ryder Location' + this.locationAddress,
+      },
+      title: 'Ryder Location ',
+      options: { animation: google.maps.Animation.BOUNCE },
+    });
   }
-
-  prevStep() {
-    this.step--;
-  }
-
-
+   
 
 }
