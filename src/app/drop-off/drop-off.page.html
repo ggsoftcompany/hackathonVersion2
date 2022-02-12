@@ -17,14 +17,10 @@
     <mat-step>
       <ng-template matStepLabel>Step 2</ng-template>
       <ion-button size="small" (click)="getPicture()">
-        <ion-icon name="camera" slot="start"></ion-icon>
-        <ion-label>Upload Image</ion-label>
-      </ion-button>
-      <ion-button size="small" (click)="getPicture()">
         <ion-icon name="image" slot="start"></ion-icon>
-        <ion-label>Gallery</ion-label>
+        <ion-label>Picture</ion-label>
       </ion-button>
-      <input type="file" *ngIf="isDesktop" #filePicker (change)="onFileChoose($event)"/>
+
 
       <ion-card *ngIf="photo">
         <ion-card-content>

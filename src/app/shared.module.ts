@@ -6,6 +6,7 @@ import {MatInputModule} from '@angular/material/input';
 import {MatButtonModule} from '@angular/material/button';
 import {MatIconModule} from '@angular/material/icon';
 import { MatExpansionModule} from '@angular/material/expansion';
+import {MatCardModule} from '@angular/material/card';
 
 const MODULES = [
   CommonModule,
@@ -14,7 +15,8 @@ const MODULES = [
   MatInputModule,
   MatButtonModule,
   MatIconModule,
-  MatExpansionModule
+  MatExpansionModule,
+  MatCardModule
 ];
 
 @NgModule({
