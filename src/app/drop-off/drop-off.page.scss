@@ -6,3 +6,38 @@ input[type="file"] {
 .example-card {
   max-width: 400px;
 }
+
+.mat-step-header .mat-step-icon-state-done, .mat-step-header .mat-step-icon-state-edit {
+  background-color: transparent !important;
+  color: #35A255;
+  +.mat-step-label{
+    color: #35A255 !important;
+  }
+}
+
+.mat-step-header .mat-step-icon-selected{
+  // background-color: $primary;
+  background-color: transparent !important;
+  color: #b30505;
+  +.mat-step-label{
+    color: #b30505 !important;
+  }
+}
+
+.code{
+  text-align: center;
+  color: green;
+  font-size: 20px;
+  font-weight: 600;
+}
+.mat-step-header .mat-step-label{
+  color: rgba(0, 0, 0, .54)
+}
+.mat-step-header .mat-step-icon {
+  color: rgba(0, 0, 0, .54);
+  background-color: transparent;
+}
+
+.mat-step-header .mat-step-icon-selected {
+  background-color: var(--ion-color-primary);
+}
